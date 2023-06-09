@@ -30,6 +30,9 @@ jobs:
 
       - name: Установка зависимостей Robot Framework
         run: pip install robotframework
+        
+      - name: Установка зависимостей SeleniumLibrary
+        run: pip install robotframework-seleniumlibrary
 
       - name: Запуск тестов Robot Framework
         run: robot src/test/java/robotframework/acceptance/file.robot
