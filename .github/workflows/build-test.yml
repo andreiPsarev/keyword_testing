@@ -1,0 +1,29 @@
+name: Сборка и тестирование
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Установка JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: 17
+
+      - name: Клонирование репозитория
+        uses: actions/checkout@v2
+
+      - name: Сборка с помощью Maven
+        run: mvn clean install
+
+      - name: Запуск тестов
+        run: mvn test
